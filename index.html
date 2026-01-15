@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bernard Solutions | Premium Technology</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- 1. CORE VARIABLES & RESET --- */
+        :root {
+            /* Brand Colors [cite: 56, 65] */
+            --color-black: #000000;
+            --color-white: #FFFFFF;
+            --color-gray-dark: #1A1A1A;
+            --color-gray-medium: #333333;
+            --color-gray-light: #E5E5E5;
+            --color-accent-blue: #3B82F6;
+            /* Electric Blue - used sparingly */
+
+            --font-main: 'Inter', sans-serif;
+            --container-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--color-black);
+            color: var(--color-white);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- 2. UTILITIES --- */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background-color: var(--color-white);
+            color: var(--color-black);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            border: 1px solid var(--color-white);
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .btn:hover {
+            background-color: var(--color-accent-blue);
+            border-color: var(--color-accent-blue);
+            color: var(--color-white);
+            transform: translateY(-2px);
+        }
+
+        /* Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- 3. NAVBAR --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 24px 0;
+            z-index: 1000;
+            transition: background 0.3s, padding 0.3s, backdrop-filter 0.3s;
+        }
+
+        .navbar.scrolled {
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 16px 0;
+            border-bottom: 1px solid var(--color-gray-dark);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            height: 36px;
+            width: auto;
+            filter: invert(1);
+        }
+
+        .logo-text {
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            font-size: 1.1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-white);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            color: white;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- 4. HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .grid-bg {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(var(--color-gray-dark) 1px, transparent 1px),
+                linear-gradient(90deg, var(--color-gray-dark) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .glow {
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .hero-watermark {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45%;
+            opacity: 0.03;
+            filter: invert(1);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .hero-content h1 {
+            font-size: 5rem;
+            line-height: 1;
+            font-weight: 700;
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+        }
+
+        .hero-content h1 span {
+            color: #666;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: #AAA;
+            max-width: 600px;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        /* --- 5. LOGO CAROUSEL --- */
+        .clients-section {
+            padding: 60px 0;
+            border-top: 1px solid var(--color-gray-dark);
+            border-bottom: 1px solid var(--color-gray-dark);
+            background: #050505;
+            overflow: hidden;
+        }
+
+        .carousel-title {
+            text-align: center;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .carousel-track-container {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .carousel-track-container::before,
+        .carousel-track-container::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 100px;
+            height: 100%;
+            z-index: 2;
+        }
+
+        .carousel-track-container::before {
+            left: 0;
+            background: linear-gradient(to right, #050505, transparent);
+        }
+
+        .carousel-track-container::after {
+            right: 0;
+            background: linear-gradient(to left, #050505, transparent);
+        }
+
+        .carousel-track {
+            display: inline-block;
+            animation: scroll 30s linear infinite;
+        }
+
+        .client-logo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 150px;
+            height: 60px;
+            margin: 0 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #666;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 4px;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* --- 6. SERVICES SECTION (NEW) --- */
+        /* Designed based on 'Brand Applications' [cite: 104] */
+        .services {
+            padding: 120px 0;
+            background-color: var(--color-black);
+            position: relative;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .service-card {
+            background: #0A0A0A;
+            border: 1px solid var(--color-gray-dark);
+            padding: 40px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Hover effect inspired by 'Accent Colors' for UI only [cite: 63] */
+        .service-card:hover {
+            border-color: var(--color-accent-blue);
+            transform: translateY(-5px);
+        }
+
+        .service-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2px;
+            height: 0%;
+            background-color: var(--color-accent-blue);
+            transition: height 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            height: 100%;
+        }
+
+        .service-number {
+            font-size: 0.85rem;
+            color: #444;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            color: var(--color-white);
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: #888;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .service-link {
+            display: inline-block;
+            margin-top: 24px;
+            color: var(--color-white);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .service-link:hover {
+            border-bottom-color: var(--color-accent-blue);
+        }
+
+        /* --- 7. PHILOSOPHY SECTION --- */
+        .philosophy {
+            padding: 120px 0;
+            border-top: 1px solid var(--color-gray-dark);
+        }
+
+        .section-header {
+            margin-bottom: 80px;
+        }
+
+        .section-label {
+            color: var(--color-accent-blue);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            max-width: 800px;
+            line-height: 1.2;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2px;
+            background-color: var(--color-gray-dark);
+            border: 1px solid var(--color-gray-dark);
+        }
+
+        .card {
+            background-color: var(--color-black);
+            padding: 40px;
+            transition: background-color 0.3s;
+        }
+
+        .card:hover {
+            background-color: #0a0a0a;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 24px;
+            color: var(--color-white);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 16px;
+        }
+
+        .card p {
+            color: #888;
+            font-size: 0.95rem;
+        }
+
+        /* --- 8. FOOTER --- */
+        footer {
+            border-top: 1px solid var(--color-gray-dark);
+            padding: 80px 0 40px;
+            background-color: #050505;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand p {
+            color: #666;
+            margin-top: 16px;
+            max-width: 250px;
+            font-size: 0.9rem;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 24px;
+            font-size: 1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--color-white);
+        }
+
+        .copyright {
+            border-top: 1px solid #1a1a1a;
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            color: #444;
+            font-size: 0.8rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-watermark {
+                width: 80%;
+                opacity: 0.05;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="container nav-content">
+            <div class="logo-container">
+                <img src="logobs.png" alt="Bernard Solutions Logo" class="logo-img">
+                <span class="logo-text">BERNARD SOLUTIONS</span>
+            </div>
+            <div class="nav-links">
+                <a href="#services">Services</a> <a href="#philosophy">Philosophy</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="hidden-mobile">
+                <a href="#contact" class="btn">Get in Touch</a>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="grid-bg"></div>
+        <div class="glow"></div>
+        <img src="image_6e8de8.png" alt="" class="hero-watermark">
+
+        <div class="container">
+            <div class="hero-content reveal">
+                <h1>CONTROLLED <br><span>STRENGTH.</span></h1>
+                <p>We build reliable, scalable technology solutions designed for long-term growth. No unnecessary noise.
+                    Just precision.</p>
+                <a href="#services" class="btn">View Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="clients-section">
+        <div class="container">
+            <h3 class="carousel-title">Trusted By Industry Leaders</h3>
+        </div>
+        <div class="carousel-track-container">
+            <div class="carousel-track">
+                <div class="client-logo">FINCORP</div>
+                <div class="client-logo">NEXUS TECH</div>
+                <div class="client-logo">AERO DYNAMICS</div>
+                <div class="client-logo">STRATA DATA</div>
+                <div class="client-logo">BLOCKCHAIN IO</div>
+                <div class="client-logo">QUANTUM SOFT</div>
+                <div class="client-logo">FINCORP</div>
+                <div class="client-logo">NEXUS TECH</div>
+                <div class="client-logo">AERO DYNAMICS</div>
+                <div class="client-logo">STRATA DATA</div>
+                <div class="client-logo">BLOCKCHAIN IO</div>
+                <div class="client-logo">QUANTUM SOFT</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Brand Applications</span>
+                <h2 class="section-title">Scalable Solutions for Complex Problems</h2>
+            </div>
+
+            <div class="services-grid reveal">
+                <div class="service-card">
+                    <span class="service-number">01</span>
+                    <h3>Software Platforms</h3>
+                    <p>Robust, custom-engineered platforms designed for high scalability. We build the backbone of your
+                        digital infrastructure using Python and Node.js architectures.</p>
+                    <a href="#" class="service-link">Learn more →</a>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-number">02</span>
+                    <h3>Web Applications</h3>
+                    <p>Modern, responsive React-based applications. We focus on clean execution and refined aesthetics
+                        to deliver intuitive user experiences.</p>
+                    <a href="#" class="service-link">Learn more →</a>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-number">03</span>
+                    <h3>Corporate Digital Identity</h3>
+                    <p>Premium web presence for enterprises. We align your digital footprint with your brand's
+                        authority, ensuring consistency across all touchpoints.</p>
+                    <a href="#" class="service-link">Learn more →</a>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-number">04</span>
+                    <h3>Technical Consulting</h3>
+                    <p>Strategic planning and detailed technical documentation. We provide the intelligence and
+                        structure needed for large-scale technology deployments.</p>
+                    <a href="#" class="service-link">Learn more →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="philosophy" class="philosophy">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Brand Essence</span>
+                <h2 class="section-title">"A brand that does not shout. A brand that delivers results through precision,
+                    technology, and trust."</h2>
+            </div>
+
+            <div class="grid-3 reveal">
+                <div class="card">
+                    <div class="card-icon">◆</div>
+                    <h3>Technically Solid</h3>
+                    <p>Robust backend architectures designed to handle high throughput with zero downtime.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">◉</div>
+                    <h3>Minimalist Precision</h3>
+                    <p>UI/UX design where every element exists for a reason. Clarity over decoration.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">❖</div>
+                    <h3>Future Oriented</h3>
+                    <p>Scalable codebases built with React, Node, and Python to adapt to tomorrow's needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo-container" style="opacity: 0.7;">
+                        <img src="logobs.png" alt="Bernard Solutions Logo" class="logo-img" style="height: 24px;">
+                        <span class="logo-text" style="font-size: 1rem;">BERNARD SOLUTIONS</span>
+                    </div>
+                    <p>Premium, modern, and reliable technology solutions.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Twitter / X</a></li>
+                        <li><a href="#">Email Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <span>© 2024 Bernard Solutions. All rights reserved.</span>
+                <span>Designed with Precision.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // 2. Reveal on Scroll Animation
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.15
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+    </script>
+</body>
+
+</html>
