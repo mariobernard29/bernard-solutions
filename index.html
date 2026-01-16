@@ -336,7 +336,8 @@
 
         /* --- 5. LOGO CAROUSEL --- */
         .clients-section {
-            padding: 40px 0;
+            padding: 60px 0;
+            /* Un poco más de aire para los logos */
             border-top: 1px solid var(--color-gray-dark);
             border-bottom: 1px solid var(--color-gray-dark);
             background: #050505;
@@ -348,6 +349,10 @@
             overflow: hidden;
             white-space: nowrap;
             position: relative;
+            /* Altura ajustada para dar espacio a los logos */
+            height: 100px;
+            display: flex;
+            align-items: center;
         }
 
         .carousel-track-container::before,
@@ -355,7 +360,8 @@
             content: "";
             position: absolute;
             top: 0;
-            width: 80px;
+            width: 120px;
+            /* Degradado más suave */
             height: 100%;
             z-index: 2;
         }
@@ -371,23 +377,41 @@
         }
 
         .carousel-track {
-            display: inline-block;
-            animation: scroll 30s linear infinite;
+            display: flex;
+            /* Flexbox para mejor alineación */
+            align-items: center;
+            animation: scroll 40s linear infinite;
+            /* Un poco más lento para apreciar los logos */
         }
 
         .client-logo {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: center;
-            width: 140px;
-            height: 50px;
-            margin: 0 30px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #666;
-            font-weight: 600;
-            font-size: 0.9rem;
-            border-radius: 4px;
+            /* Dimensiones para tus logos de 400x150px escalados */
+            width: 200px;
+            height: 75px;
+            margin: 0 40px;
+            /* Eliminamos estilos de caja de texto */
+            background: transparent;
+            border: none;
+            transition: transform 0.3s ease;
+        }
+
+        .client-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            /* Asegura que el logo se vea completo */
+            /* Efecto estético: Grisáceo y oscuro por defecto */
+            filter: grayscale(100%) opacity(0.5);
+            transition: all 0.4s ease;
+        }
+
+        /* Al pasar el mouse, el logo recobra color y brillo */
+        .client-logo:hover img {
+            filter: grayscale(0%) opacity(1);
+            transform: scale(1.05);
         }
 
         @keyframes scroll {
@@ -396,7 +420,18 @@
             }
 
             100% {
+                /* Ajuste basado en el ancho aproximado de los elementos */
                 transform: translateX(-50%);
+            }
+        }
+
+        /* Ajuste Responsive para móviles */
+        @media (max-width: 600px) {
+            .client-logo {
+                width: 140px;
+                /* Más pequeños en celular */
+                height: 55px;
+                margin: 0 20px;
             }
         }
 
@@ -863,18 +898,19 @@
         <section class="clients-section">
             <div class="carousel-track-container">
                 <div class="carousel-track">
-                    <div class="client-logo">FINCORP</div>
-                    <div class="client-logo">NEXUS TECH</div>
-                    <div class="client-logo">AERO DYNAMICS</div>
-                    <div class="client-logo">STRATA DATA</div>
-                    <div class="client-logo">BLOCKCHAIN IO</div>
-                    <div class="client-logo">QUANTUM SOFT</div>
-                    <div class="client-logo">FINCORP</div>
-                    <div class="client-logo">NEXUS TECH</div>
-                    <div class="client-logo">AERO DYNAMICS</div>
-                    <div class="client-logo">STRATA DATA</div>
-                    <div class="client-logo">BLOCKCHAIN IO</div>
-                    <div class="client-logo">QUANTUM SOFT</div>
+                    <div class="client-logo"><img src="./logos/coco-mar.png" alt="Coco Mar"></div>
+                    <div class="client-logo"><img src="./logos/polar-stocks.png" alt="Polar Stocks"></div>
+                    <div class="client-logo"><img src="./logos/go-kitchen.png" alt="Go Kitchen"></div>
+                    <div class="client-logo"><img src="./logos/plebe-arepas.png" alt="Plebe Arepas"></div>
+                    <div class="client-logo"><img src="./logos/spark-agency.png" alt="Spark Agency"></div>
+                    <div class="client-logo"><img src="./logos/bernafy.png" alt="Bernafy"></div>
+
+                    <div class="client-logo"><img src="./logos/coco-mar.png" alt="Coco Mar"></div>
+                    <div class="client-logo"><img src="./logos/polar-stocks.png" alt="Polar Stocks"></div>
+                    <div class="client-logo"><img src="./logos/go-kitchen.png" alt="Go Kitchen"></div>
+                    <div class="client-logo"><img src="./logos/plebe-arepas.png" alt="Plebe Arepas"></div>
+                    <div class="client-logo"><img src="./logos/spark-agency.png" alt="Spark Agency"></div>
+                    <div class="client-logo"><img src="./logos/bernafy.png" alt="Bernafy"></div>
                 </div>
             </div>
         </section>
