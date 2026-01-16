@@ -12,23 +12,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+
     <style>
         /* --- 1. CORE VARIABLES & RESET --- */
         :root {
-
-            /* Brand Colors [cite: 56, 57, 58, 60] */
             --color-black: #000000;
             --color-white: #FFFFFF;
             --color-gray-dark: #1A1A1A;
             --color-gray-medium: #333333;
             --color-gray-light: #E5E5E5;
             --color-accent-blue: #3B82F6;
-
-            /* Electric Blue [cite: 65] */
-
             --font-main: 'Inter', sans-serif;
-
-            /* [cite: 69] */
             --container-width: 1200px;
             --nav-height: 80px;
         }
@@ -81,7 +75,6 @@
             transform: translateY(-2px);
         }
 
-        /* Animation Classes */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -106,7 +99,7 @@
         }
 
         .navbar.scrolled {
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--color-gray-dark);
         }
@@ -123,13 +116,10 @@
             align-items: center;
             gap: 12px;
             z-index: 1002;
-            /* Above mobile menu */
         }
 
         .logo-img {
             height: 32px;
-
-            /* [cite: 40] Minimum digital size */
             width: auto;
             filter: invert(1);
         }
@@ -141,7 +131,6 @@
             color: var(--color-white);
         }
 
-        /* Desktop Nav Links */
         .nav-links {
             display: flex;
             gap: 40px;
@@ -158,14 +147,12 @@
             color: var(--color-white);
         }
 
-        /* Right Side Actions (Lang + Button) */
         .nav-actions {
             display: flex;
             align-items: center;
             gap: 20px;
         }
 
-        /* Language Switcher */
         .lang-switch {
             display: flex;
             gap: 10px;
@@ -197,7 +184,6 @@
             filter: grayscale(0);
         }
 
-        /* Mobile Menu Button (Hamburger) */
         .mobile-menu-btn {
             display: none;
             flex-direction: column;
@@ -218,7 +204,6 @@
             transition: all 0.3s ease;
         }
 
-        /* Mobile Menu Button Animation state */
         .mobile-menu-btn.open span:nth-child(1) {
             transform: rotate(45deg) translate(5px, 5px);
         }
@@ -231,7 +216,6 @@
             transform: rotate(-45deg) translate(7px, -8px);
         }
 
-        /* Mobile Overlay Menu */
         .mobile-overlay {
             position: fixed;
             top: 0;
@@ -312,17 +296,11 @@
         }
 
         .hero-content h1 {
-            font-size: 4rem;
+            font-size: clamp(2.5rem, 8vw, 5.5rem);
             line-height: 1.1;
             font-weight: 700;
             margin-bottom: 24px;
             letter-spacing: -2px;
-        }
-
-        @media (min-width: 768px) {
-            .hero-content h1 {
-                font-size: 5.5rem;
-            }
         }
 
         .hero-content h1 span {
@@ -330,7 +308,7 @@
         }
 
         .hero-content p {
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 2vw, 1.1rem);
             color: #AAA;
             max-width: 600px;
             margin-bottom: 40px;
@@ -405,7 +383,7 @@
 
         /* --- 6. SERVICES SECTION --- */
         .services {
-            padding: 100px 0;
+            padding: 80px 0;
             background-color: var(--color-black);
         }
 
@@ -420,15 +398,15 @@
         }
 
         .section-title {
-            font-size: 2rem;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
             max-width: 800px;
-            line-height: 1.2;
+            line-height: 1.3;
             margin-bottom: 60px;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 24px;
         }
 
@@ -470,7 +448,7 @@
         }
 
         .service-card h3 {
-            font-size: 1.4rem;
+            font-size: clamp(1.2rem, 3vw, 1.4rem);
             margin-bottom: 16px;
             color: var(--color-white);
             font-weight: 600;
@@ -498,13 +476,13 @@
 
         /* --- 7. PHILOSOPHY / ESSENCE --- */
         .philosophy {
-            padding: 100px 0;
+            padding: 80px 0;
             border-top: 1px solid var(--color-gray-dark);
         }
 
         .grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1px;
             background-color: var(--color-gray-dark);
             border: 1px solid var(--color-gray-dark);
@@ -526,17 +504,28 @@
             color: var(--color-white);
         }
 
+        .card h3 {
+            font-size: clamp(1.2rem, 3vw, 1.4rem);
+            margin-bottom: 16px;
+        }
+
+        .card p {
+            color: #888;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
         /* --- 8. FOOTER --- */
         footer {
             border-top: 1px solid var(--color-gray-dark);
-            padding: 80px 0 40px;
+            padding: 60px 0 40px;
             background-color: #050505;
         }
 
         .footer-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
             margin-bottom: 60px;
         }
 
@@ -583,24 +572,215 @@
         }
 
         /* --- RESPONSIVE MEDIA QUERIES --- */
+
+        /* Tablet & Mobile: 900px and below */
         @media (max-width: 900px) {
 
-            /* Hide Desktop Elements */
             .nav-links,
             .desktop-cta {
                 display: none !important;
             }
 
-            /* Show Mobile Elements */
             .mobile-menu-btn {
                 display: flex;
             }
 
+            .logo-text {
+                font-size: 0.95rem;
+            }
+
+            .logo-img {
+                height: 28px;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .services {
+                padding: 60px 0;
+            }
+
+            .philosophy {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                margin-bottom: 40px;
+            }
+
+            .hero-content {
+                text-align: left;
+            }
+
+            .hero-watermark {
+                width: 60%;
+                opacity: 0.02;
+            }
+
+            .glow {
+                width: 400px;
+                height: 400px;
+            }
+        }
+
+        /* Mobile: 600px and below */
+        @media (max-width: 600px) {
+            :root {
+                --nav-height: 70px;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+
+            .navbar {
+                height: 70px;
+            }
+
+            .logo-text {
+                font-size: 0.85rem;
+            }
+
+            .logo-img {
+                height: 24px;
+            }
+
+            .nav-actions {
+                gap: 12px;
+            }
+
+            .lang-switch {
+                padding: 4px 10px;
+            }
+
+            .lang-option {
+                font-size: 1rem;
+            }
+
+            .mobile-menu-btn {
+                width: 26px;
+                height: 18px;
+            }
+
+            .mobile-overlay a {
+                font-size: 1.5rem;
+                margin: 12px 0;
+            }
+
+            .hero {
+                padding-top: 70px;
+            }
+
+            .hero-content h1 {
+                margin-bottom: 20px;
+            }
+
+            .hero-content p {
+                margin-bottom: 30px;
+            }
+
+            .btn {
+                padding: 10px 24px;
+                font-size: 0.8rem;
+            }
+
+            .clients-section {
+                padding: 30px 0;
+            }
+
+            .client-logo {
+                width: 120px;
+                height: 45px;
+                margin: 0 20px;
+                font-size: 0.8rem;
+            }
+
+            .services {
+                padding: 50px 0;
+            }
+
+            .section-label {
+                font-size: 0.75rem;
+                margin-bottom: 12px;
+            }
+
+            .section-title {
+                margin-bottom: 30px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .service-card {
+                padding: 24px;
+            }
+
+            .service-card h3 {
+                margin-bottom: 12px;
+            }
+
+            .service-card p {
+                font-size: 0.9rem;
+                margin-bottom: 20px;
+            }
+
+            .philosophy {
+                padding: 50px 0;
+            }
+
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 30px 24px;
+            }
+
+            .card-icon {
+                font-size: 1.75rem;
+                margin-bottom: 20px;
+            }
+
+            footer {
+                padding: 50px 0 30px;
+            }
+
             .footer-grid {
                 grid-template-columns: 1fr;
+                gap: 30px;
+                margin-bottom: 40px;
+            }
+
+            .copyright {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+
+            .hero-watermark {
+                display: none;
+            }
+        }
+
+        /* Extra small: 400px and below */
+        @media (max-width: 400px) {
+            .logo-text {
+                display: none;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card {
+                padding: 20px;
             }
         }
     </style>
+
 </head>
 
 <body>
