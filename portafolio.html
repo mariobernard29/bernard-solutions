@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bernard Solutions | Selected Works</title>
+    <meta name="description"
+        content="Explore Bernard Solutions' portfolio. Featuring case studies like Polar Stocks, Go Kitchen, and Plebe Arepas. We build scalable digital products.">
+    <meta name="keywords"
+        content="Portfolio, Software Case Studies, Polar Stocks, Go Kitchen, POS Systems, Fintech Development, Web Design Mexico">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="Bernard Solutions | Our Work">
+    <meta property="og:description"
+        content="Precision in every pixel. See how we transform businesses through technology.">
+    <meta property="og:image" content="image_6e8de8.png">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" type="image/png" href="logobs.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- REUSING CORE STYLES FOR CONSISTENCY --- */
+        :root {
+            --color-black: #000000;
+            --color-white: #FFFFFF;
+            --color-gray-dark: #1A1A1A;
+            --color-gray-medium: #333333;
+            --color-gray-light: #E5E5E5;
+            --color-accent-blue: #3B82F6;
+            --font-main: 'Inter', sans-serif;
+            --container-width: 1200px;
+            --nav-height: 80px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--color-black);
+            color: var(--color-white);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navbar Styles (Identical to Index) */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: var(--nav-height);
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-gray-dark);
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 32px;
+            width: auto;
+            filter: invert(1);
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--color-white);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--color-white);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 24px;
+            background-color: var(--color-white);
+            color: var(--color-black);
+            font-weight: 600;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-size: 0.8rem;
+            border: 1px solid var(--color-white);
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--color-accent-blue);
+            border-color: var(--color-accent-blue);
+            color: var(--color-white);
+        }
+
+        /* --- PORTFOLIO SPECIFIC STYLES --- */
+        .portfolio-header {
+            padding: 160px 0 80px;
+            text-align: center;
+        }
+
+        .portfolio-header h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+        }
+
+        .portfolio-header p {
+            color: #888;
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+            gap: 40px;
+            padding-bottom: 120px;
+        }
+
+        .project-card {
+            background: #0A0A0A;
+            border: 1px solid var(--color-gray-dark);
+            transition: all 0.4s ease;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            border-color: var(--color-gray-medium);
+            transform: translateY(-5px);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 300px;
+            background-color: var(--color-gray-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Placeholder graphic for projects */
+        .project-image span {
+            font-size: 3rem;
+            color: #333;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            z-index: 2;
+        }
+
+        .project-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            opacity: 0.6;
+        }
+
+        .project-info {
+            padding: 32px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-accent-blue);
+            font-weight: 600;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
+
+        .project-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--color-white);
+        }
+
+        .project-desc {
+            color: #999;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .project-link {
+            margin-top: auto;
+            align-self: flex-start;
+            color: var(--color-white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--color-accent-blue);
+            padding-bottom: 2px;
+        }
+
+        /* Footer (Same as index) */
+        footer {
+            border-top: 1px solid var(--color-gray-dark);
+            padding: 60px 0 40px;
+            background: #050505;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .copyright {
+            border-top: 1px solid #1a1a1a;
+            padding-top: 30px;
+            margin-top: 60px;
+            display: flex;
+            justify-content: space-between;
+            color: #444;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 900px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            /* Simplified mobile for this page */
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo-container">
+                <img src="logobs.png" alt="Bernard Solutions Logo" class="logo-img">
+                <span class="logo-text">BERNARD SOLUTIONS</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#services">Services</a>
+                <a href="portfolio.html" class="active">Portfolio</a> <a href="index.html#contact">Contact</a>
+            </div>
+            <a href="index.html#contact" class="btn">Start a Project</a>
+        </div>
+    </nav>
+
+    <header class="portfolio-header">
+        <div class="container">
+            <h1>Engineered for Impact.</h1>
+            <p>A selection of technical projects where precision meets performance. We turn complex requirements into
+                elegant software solutions.</p>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="projects-grid">
+
+            <article class="project-card">
+                <div class="project-image">
+                    <div class="project-overlay"></div>
+                    <span>Polar Stocks</span>
+                </div>
+                <div class="project-info">
+                    <div class="project-tags">
+                        <span class="tag">Fintech</span>
+                        <span class="tag">Web Platform</span>
+                    </div>
+                    <h3 class="project-title">Polar Stocks</h3>
+                    <p class="project-desc">
+                        A high-performance stock market analysis platform designed for modern traders. Features
+                        real-time data visualization, portfolio tracking, and advanced financial metrics integration.
+                        Built for speed and accuracy.
+                    </p>
+                    <a href="#" class="project-link">View Case Study →</a>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-image">
+                    <div class="project-overlay"></div>
+                    <span>Go Kitchen</span>
+                </div>
+                <div class="project-info">
+                    <div class="project-tags">
+                        <span class="tag">SaaS</span>
+                        <span class="tag">POS System</span>
+                    </div>
+                    <h3 class="project-title">Go Kitchen</h3>
+                    <p class="project-desc">
+                        A specialized Point of Sale (POS) system engineered for the culinary industry. Streamlines order
+                        management, inventory tracking, and kitchen operations with a minimalist, touch-friendly
+                        interface.
+                    </p>
+                    <a href="#" class="project-link">View Case Study →</a>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-image">
+                    <div class="project-overlay"></div>
+                    <span>Plebe Arepas</span>
+                </div>
+                <div class="project-info">
+                    <div class="project-tags">
+                        <span class="tag">E-Commerce</span>
+                        <span class="tag">Delivery Web</span>
+                    </div>
+                    <h3 class="project-title">Plebe Arepas</h3>
+                    <p class="project-desc">
+                        A digital storefront for a Venezuelan food brand in Los Mochis. Optimized for delivery
+                        logistics, this platform handles orders efficiently while showcasing the brand's cultural
+                        identity through a modern web experience.
+                    </p>
+                    <a href="#" class="project-link">Visit Website →</a>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-image">
+                    <div class="project-overlay"></div>
+                    <span>Cocomar</span>
+                </div>
+                <div class="project-info">
+                    <div class="project-tags">
+                        <span class="tag">Corporate</span>
+                        <span class="tag">Branding</span>
+                    </div>
+                    <h3 class="project-title">Cocomar</h3>
+                    <p class="project-desc">
+                        Corporate digital identity and web presence. We developed a robust platform that communicates
+                        the company's value proposition with clarity, focusing on fast load times and SEO dominance in
+                        their sector.
+                    </p>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <img src="logobs.png" alt="Bernard Solutions"
+                        style="height: 24px; filter: invert(1); opacity: 0.7; margin-bottom: 15px;">
+                    <p style="color: #666; font-size: 0.9rem;">Building the future, one line of code at a time.</p>
+                </div>
+                <div style="color: #666;">
+                    <h4 style="color: white; margin-bottom: 20px;">Navigation</h4>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 10px;"><a href="index.html"
+                                style="color: inherit; text-decoration: none;">Home</a></li>
+                        <li style="margin-bottom: 10px;"><a href="portfolio.html"
+                                style="color: white; text-decoration: none;">Portfolio</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <span>© 2026 Bernard Solutions. All rights reserved.</span>
+                <span>Designed with Precision.</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
