@@ -4,10 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bernard Solutions | Premium Technology</title>
+
+    <title>Bernard Solutions | Premium Software & AI Integration</title>
+    <meta name="description"
+        content="Bernard Solutions provides high-end software development, web applications, and AI integration for enterprises. We build scalable, reliable technology infrastructures.">
+    <meta name="keywords"
+        content="Software Development, AI Integration, Web Applications, Corporate Identity, Python, Node.js, React, Tech Consulting">
+    <meta name="author" content="Bernard Solutions">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#000000">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bernardsolutions.com/">
+    <meta property="og:title" content="Bernard Solutions | Controlled Strength">
+    <meta property="og:description"
+        content="Premium technology solutions designed for long-term growth. No unnecessary noise. Just precision.">
+    <meta property="og:image" content="image_6e8de8.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bernard Solutions | Premium Technology">
+    <meta name="twitter:description"
+        content="We build reliable, scalable technology solutions designed for long-term growth.">
+    <meta name="twitter:image" content="image_6e8de8.png">
 
     <link rel="icon" type="image/png" href="logobs.png">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -767,9 +786,6 @@
 
         /* Extra small: 400px and below */
         @media (max-width: 400px) {
-            .logo-text {
-                display: none;
-            }
 
             .services-grid {
                 grid-template-columns: 1fr;
@@ -785,160 +801,173 @@
 
 <body>
 
-    <nav class="navbar" id="navbar">
-        <div class="container nav-content">
-            <div class="logo-container">
-                <img src="logobs.png" alt="Bernard Solutions Logo" class="logo-img">
-                <span class="logo-text">BERNARD SOLUTIONS</span>
-            </div>
-
-            <div class="nav-links">
-                <a href="#services" data-key="nav_services">Services</a>
-                <a href="#philosophy" data-key="nav_philosophy">Philosophy</a>
-                <a href="#contact" data-key="nav_contact">Contact</a>
-            </div>
-
-            <div class="nav-actions">
-                <div class="lang-switch" onclick="toggleLanguage()">
-                    <span class="lang-option active" id="flag-en">🇺🇸</span>
-                    <span class="lang-option" id="flag-es">🇪🇸</span>
+    <header>
+        <nav class="navbar" id="navbar">
+            <div class="container nav-content">
+                <div class="logo-container">
+                    <img src="logobs.png" alt="Bernard Solutions Logo" class="logo-img">
+                    <span class="logo-text">BERNARD SOLUTIONS</span>
                 </div>
 
-                <a href="#contact" class="btn desktop-cta" data-key="btn_contact">Get in Touch</a>
+                <div class="nav-links">
+                    <a href="#services" data-key="nav_services">Services</a>
+                    <a href="#philosophy" data-key="nav_philosophy">Philosophy</a>
+                    <a href="#contact" data-key="nav_contact">Contact</a>
+                </div>
 
-                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+                <div class="nav-actions">
+                    <div class="lang-switch" onclick="toggleLanguage()" aria-label="Toggle Language" role="button"
+                        tabindex="0">
+                        <span class="lang-option active" id="flag-en">🇺🇸</span>
+                        <span class="lang-option" id="flag-es">🇪🇸</span>
+                    </div>
+
+                    <a href="#contact" class="btn desktop-cta" data-key="btn_contact">Get in Touch</a>
+
+                    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Open Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
             </div>
+        </nav>
+
+        <div class="mobile-overlay" id="mobileOverlay">
+            <a href="#services" onclick="toggleMobileMenu()" data-key="nav_services">Services</a>
+            <a href="#philosophy" onclick="toggleMobileMenu()" data-key="nav_philosophy">Philosophy</a>
+            <a href="#contact" onclick="toggleMobileMenu()" data-key="nav_contact">Contact</a>
+            <br>
+            <a href="#contact" onclick="toggleMobileMenu()" class="btn" data-key="btn_contact"
+                style="font-size: 1rem; margin-top: 20px;">Get in Touch</a>
         </div>
-    </nav>
+    </header>
 
-    <div class="mobile-overlay" id="mobileOverlay">
-        <a href="#services" onclick="toggleMobileMenu()" data-key="nav_services">Services</a>
-        <a href="#philosophy" onclick="toggleMobileMenu()" data-key="nav_philosophy">Philosophy</a>
-        <a href="#contact" onclick="toggleMobileMenu()" data-key="nav_contact">Contact</a>
-        <br>
-        <a href="#contact" onclick="toggleMobileMenu()" class="btn" data-key="btn_contact"
-            style="font-size: 1rem; margin-top: 20px;">Get in Touch</a>
-    </div>
+    <main>
+        <section class="hero">
+            <div class="grid-bg"></div>
+            <div class="glow"></div>
+            <img src="image_6e8de8.png" alt="" class="hero-watermark" loading="lazy">
 
-    <section class="hero">
-        <div class="grid-bg"></div>
-        <div class="glow"></div>
-        <img src="image_6e8de8.png" alt="" class="hero-watermark">
-
-        <div class="container">
-            <div class="hero-content reveal">
-                <h1 data-key="hero_title">CONTROLLED <br><span>STRENGTH.</span></h1>
-                <p data-key="hero_desc">We build reliable, scalable technology solutions designed for long-term growth.
-                    No unnecessary noise. Just precision.</p>
-                <a href="#services" class="btn" data-key="hero_btn">View Our Services</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="clients-section">
-        <div class="carousel-track-container">
-            <div class="carousel-track">
-                <div class="client-logo">FINCORP</div>
-                <div class="client-logo">NEXUS TECH</div>
-                <div class="client-logo">AERO DYNAMICS</div>
-                <div class="client-logo">STRATA DATA</div>
-                <div class="client-logo">BLOCKCHAIN IO</div>
-                <div class="client-logo">QUANTUM SOFT</div>
-                <div class="client-logo">FINCORP</div>
-                <div class="client-logo">NEXUS TECH</div>
-                <div class="client-logo">AERO DYNAMICS</div>
-                <div class="client-logo">STRATA DATA</div>
-                <div class="client-logo">BLOCKCHAIN IO</div>
-                <div class="client-logo">QUANTUM SOFT</div>
-            </div>
-        </div>
-    </section>
-
-    <section id="services" class="services">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-label" data-key="sec_apps">Brand Applications</span>
-                <h2 class="section-title" data-key="sec_title">Scalable Solutions for Complex Problems</h2>
-            </div>
-
-            <div class="services-grid reveal">
-                <div class="service-card">
-                    <span class="service-number">01</span>
-                    <h3 data-key="serv1_title">Software Platforms</h3>
-                    <p data-key="serv1_desc">Robust, custom-engineered platforms designed for high scalability. We build
-                        the backbone of your digital infrastructure using Python and Node.js architectures.</p>
-                    <a href="#" class="service-link" data-key="learn_more">Learn more →</a>
-                </div>
-
-                <div class="service-card">
-                    <span class="service-number">02</span>
-                    <h3 data-key="serv2_title">Web Applications</h3>
-                    <p data-key="serv2_desc">Modern, responsive React-based applications. We focus on clean execution
-                        and refined aesthetics to deliver intuitive user experiences.</p>
-                    <a href="#" class="service-link" data-key="learn_more">Learn more →</a>
-                </div>
-
-                <div class="service-card">
-                    <span class="service-number">03</span>
-                    <h3 data-key="serv3_title">Corporate Identity</h3>
-                    <p data-key="serv3_desc">Premium web presence for enterprises. We align your digital footprint with
-                        your brand's authority, ensuring consistency across all touchpoints.</p>
-                    <a href="#" class="service-link" data-key="learn_more">Learn more →</a>
-                </div>
-
-                <div class="service-card">
-                    <span class="service-number">04</span>
-                    <h3 data-key="serv4_title">Technical Consulting</h3>
-                    <p data-key="serv4_desc">Strategic planning and detailed technical documentation. We provide the
-                        intelligence and structure needed for large-scale technology deployments.</p>
-                    <a href="#" class="service-link" data-key="learn_more">Learn more →</a>
-                </div>
-
-                <div class="service-card" style="border-color: var(--color-gray-medium);">
-                    <span class="service-number" style="color: var(--color-accent-blue);">NEW / 05</span>
-                    <h3 data-key="serv5_title">AI Integration</h3>
-                    <p data-key="serv5_desc">Automate your business processes with custom AI solutions. From intelligent
-                        chatbots to data analysis, we integrate the future into your workflow.</p>
-                    <a href="#" class="service-link" data-key="learn_more">Learn more →</a>
+            <div class="container">
+                <div class="hero-content reveal">
+                    <h1 data-key="hero_title">CONTROLLED <br><span>STRENGTH.</span></h1>
+                    <p data-key="hero_desc">We build reliable, scalable technology solutions designed for long-term
+                        growth.
+                        No unnecessary noise. Just precision.</p>
+                    <a href="#services" class="btn" data-key="hero_btn">View Our Services</a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="philosophy" class="philosophy">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-label" data-key="brand_essence">Brand Essence</span>
-                <h2 class="section-title" data-key="essence_quote">"A brand that does not shout. A brand that delivers
-                    results through precision, technology, and trust."</h2>
-            </div>
-
-            <div class="grid-3 reveal">
-                <div class="card">
-                    <div class="card-icon">◆</div>
-                    <h3 data-key="val1_title">Technically Solid</h3>
-                    <p data-key="val1_desc">Robust backend architectures designed to handle high throughput with zero
-                        downtime.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">◉</div>
-                    <h3 data-key="val2_title">Minimalist Precision</h3>
-                    <p data-key="val2_desc">UI/UX design where every element exists for a reason. Clarity over
-                        decoration.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">❖</div>
-                    <h3 data-key="val3_title">Future Oriented</h3>
-                    <p data-key="val3_desc">Scalable codebases built with modern stacks to adapt to tomorrow's needs.
-                    </p>
+        <section class="clients-section">
+            <div class="carousel-track-container">
+                <div class="carousel-track">
+                    <div class="client-logo">FINCORP</div>
+                    <div class="client-logo">NEXUS TECH</div>
+                    <div class="client-logo">AERO DYNAMICS</div>
+                    <div class="client-logo">STRATA DATA</div>
+                    <div class="client-logo">BLOCKCHAIN IO</div>
+                    <div class="client-logo">QUANTUM SOFT</div>
+                    <div class="client-logo">FINCORP</div>
+                    <div class="client-logo">NEXUS TECH</div>
+                    <div class="client-logo">AERO DYNAMICS</div>
+                    <div class="client-logo">STRATA DATA</div>
+                    <div class="client-logo">BLOCKCHAIN IO</div>
+                    <div class="client-logo">QUANTUM SOFT</div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <section id="services" class="services">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-label" data-key="sec_apps">Brand Applications</span>
+                    <h2 class="section-title" data-key="sec_title">Scalable Solutions for Complex Problems</h2>
+                </div>
+
+                <div class="services-grid reveal">
+                    <div class="service-card">
+                        <span class="service-number">01</span>
+                        <h3 data-key="serv1_title">Software Platforms</h3>
+                        <p data-key="serv1_desc">Robust, custom-engineered platforms designed for high scalability. We
+                            build
+                            the backbone of your digital infrastructure using Python and Node.js architectures.</p>
+                        <a href="#" class="service-link" data-key="learn_more">Learn more →</a>
+                    </div>
+
+                    <div class="service-card">
+                        <span class="service-number">02</span>
+                        <h3 data-key="serv2_title">Web Applications</h3>
+                        <p data-key="serv2_desc">Modern, responsive React-based applications. We focus on clean
+                            execution
+                            and refined aesthetics to deliver intuitive user experiences.</p>
+                        <a href="#" class="service-link" data-key="learn_more">Learn more →</a>
+                    </div>
+
+                    <div class="service-card">
+                        <span class="service-number">03</span>
+                        <h3 data-key="serv3_title">Corporate Identity</h3>
+                        <p data-key="serv3_desc">Premium web presence for enterprises. We align your digital footprint
+                            with
+                            your brand's authority, ensuring consistency across all touchpoints.</p>
+                        <a href="#" class="service-link" data-key="learn_more">Learn more →</a>
+                    </div>
+
+                    <div class="service-card">
+                        <span class="service-number">04</span>
+                        <h3 data-key="serv4_title">Technical Consulting</h3>
+                        <p data-key="serv4_desc">Strategic planning and detailed technical documentation. We provide the
+                            intelligence and structure needed for large-scale technology deployments.</p>
+                        <a href="#" class="service-link" data-key="learn_more">Learn more →</a>
+                    </div>
+
+                    <div class="service-card" style="border-color: var(--color-gray-medium);">
+                        <span class="service-number" style="color: var(--color-accent-blue);">NEW / 05</span>
+                        <h3 data-key="serv5_title">AI Integration</h3>
+                        <p data-key="serv5_desc">Automate your business processes with custom AI solutions. From
+                            intelligent
+                            chatbots to data analysis, we integrate the future into your workflow.</p>
+                        <a href="#" class="service-link" data-key="learn_more">Learn more →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="philosophy" class="philosophy">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-label" data-key="brand_essence">Brand Essence</span>
+                    <h2 class="section-title" data-key="essence_quote">"A brand that does not shout. A brand that
+                        delivers
+                        results through precision, technology, and trust."</h2>
+                </div>
+
+                <div class="grid-3 reveal">
+                    <div class="card">
+                        <div class="card-icon">◆</div>
+                        <h3 data-key="val1_title">Technically Solid</h3>
+                        <p data-key="val1_desc">Robust backend architectures designed to handle high throughput with
+                            zero
+                            downtime.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">◉</div>
+                        <h3 data-key="val2_title">Minimalist Precision</h3>
+                        <p data-key="val2_desc">UI/UX design where every element exists for a reason. Clarity over
+                            decoration.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">❖</div>
+                        <h3 data-key="val3_title">Future Oriented</h3>
+                        <p data-key="val3_desc">Scalable codebases built with modern stacks to adapt to tomorrow's
+                            needs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer id="contact">
         <div class="container">
