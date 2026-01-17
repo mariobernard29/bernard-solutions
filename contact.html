@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact Bernard Solutions | Start a Project</title>
+    <meta name="description"
+        content="Get in touch with Bernard Solutions. Let's discuss your software development, web application, or AI integration needs.">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="Contact Bernard Solutions">
+    <meta property="og:description" content="Ready to build scalable solutions? Tell us about your project.">
+    <meta property="og:image" content="image_6e8de8.png">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" type="image/png" href="logobs.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CORE STYLES (Identical to previous pages) --- */
+        :root {
+            --color-black: #000000;
+            --color-white: #FFFFFF;
+            --color-gray-dark: #1A1A1A;
+            --color-gray-medium: #333333;
+            --color-accent-blue: #3B82F6;
+            --font-main: 'Inter', sans-serif;
+            --container-width: 1200px;
+            --nav-height: 80px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--color-black);
+            color: var(--color-white);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: var(--nav-height);
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-gray-dark);
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 32px;
+            width: auto;
+            filter: invert(1);
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--color-white);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--color-white);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* Lang Switcher */
+        .lang-switch {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .lang-switch:hover {
+            border-color: var(--color-gray-medium);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .lang-option {
+            font-size: 1.2rem;
+            opacity: 0.4;
+            filter: grayscale(1);
+            transition: all 0.3s;
+        }
+
+        .lang-option.active {
+            opacity: 1;
+            transform: scale(1.1);
+            filter: grayscale(0);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1002;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: white;
+            transition: 0.3s;
+        }
+
+        .mobile-menu-btn.open span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-btn.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -8px);
+        }
+
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: var(--color-black);
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .mobile-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-overlay a {
+            font-size: 2rem;
+            color: white;
+            text-decoration: none;
+            margin: 15px 0;
+            font-weight: 700;
+        }
+
+        /* --- CONTACT PAGE SPECIFIC --- */
+        .contact-section {
+            padding-top: 160px;
+            padding-bottom: 100px;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Abstract Background */
+        .grid-bg {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            background-image: linear-gradient(var(--color-gray-dark) 1px, transparent 1px), linear-gradient(90deg, var(--color-gray-dark) 1px, transparent 1px);
+            background-size: 60px 60px;
+            opacity: 0.15;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            /* Asymmetric layout */
+            gap: 80px;
+        }
+
+        /* LEFT COLUMN: INFO */
+        .contact-info h1 {
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            line-height: 1.1;
+            font-weight: 700;
+            letter-spacing: -2px;
+            margin-bottom: 30px;
+        }
+
+        .contact-info p {
+            color: #888;
+            font-size: 1.1rem;
+            margin-bottom: 50px;
+            font-weight: 300;
+            max-width: 400px;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .social-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--color-white);
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--color-gray-dark);
+            transition: all 0.3s;
+        }
+
+        .social-item:hover {
+            color: var(--color-accent-blue);
+            border-bottom-color: var(--color-accent-blue);
+            padding-left: 10px;
+        }
+
+        .social-icon {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+        }
+
+        /* RIGHT COLUMN: FORM */
+        .contact-form-container {
+            background: #0A0A0A;
+            border: 1px solid var(--color-gray-dark);
+            padding: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--color-gray-medium);
+            padding: 10px 0;
+            color: var(--color-white);
+            font-family: var(--font-main);
+            font-size: 1rem;
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-bottom-color: var(--color-accent-blue);
+            background: linear-gradient(to top, rgba(59, 130, 246, 0.05), transparent);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Custom Radio Buttons for "Interest" */
+        .interest-grid {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .interest-option {
+            cursor: pointer;
+            padding: 8px 16px;
+            border: 1px solid var(--color-gray-medium);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #888;
+            transition: all 0.3s;
+        }
+
+        .interest-option:hover {
+            border-color: var(--color-white);
+            color: var(--color-white);
+        }
+
+        .interest-option.selected {
+            background: var(--color-white);
+            color: var(--color-black);
+            border-color: var(--color-white);
+            font-weight: 600;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--color-white);
+            color: var(--color-black);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: var(--color-accent-blue);
+            color: var(--color-white);
+        }
+
+        /* Success Message Overlay */
+        .success-msg {
+            display: none;
+            text-align: center;
+            color: var(--color-accent-blue);
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--color-gray-dark);
+            padding: 60px 0 40px;
+            background: #050505;
+            margin-top: 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .copyright {
+            border-top: 1px solid #1a1a1a;
+            padding-top: 30px;
+            margin-top: 60px;
+            display: flex;
+            justify-content: space-between;
+            color: #444;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 900px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .nav-links,
+            .desktop-cta {
+                display: none !important;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .contact-info h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo-container">
+                <img src="logobs.png" alt="Bernard Solutions Logo" class="logo-img">
+                <span class="logo-text">BERNARD SOLUTIONS</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html" data-key="nav_home">Home</a>
+                <a href="index.html#services" data-key="nav_services">Services</a>
+                <a href="portfolio.html" data-key="nav_portfolio">Portfolio</a>
+                <a href="contact.html" class="active" data-key="nav_contact">Contact</a>
+            </div>
+
+            <div class="nav-actions">
+                <div class="lang-switch" onclick="toggleLanguage()">
+                    <span class="lang-option active" id="flag-en">🇺🇸</span>
+                    <span class="lang-option" id="flag-es">🇪🇸</span>
+                </div>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-overlay" id="mobileOverlay">
+        <a href="index.html" onclick="toggleMobileMenu()" data-key="nav_home">Home</a>
+        <a href="portfolio.html" onclick="toggleMobileMenu()" data-key="nav_portfolio">Portfolio</a>
+        <a href="contact.html" onclick="toggleMobileMenu()" data-key="nav_contact">Contact</a>
+    </div>
+
+    <section class="contact-section">
+        <div class="grid-bg"></div>
+        <div class="container">
+            <div class="contact-grid">
+
+                <div class="contact-info">
+                    <h1 class="reveal" data-key="title">Let's start the<br><span
+                            style="color: #444;">conversation.</span></h1>
+                    <p class="reveal" data-key="subtitle">Ready to optimize your operations or build your next digital
+                        product? We are here to provide precision and clarity.</p>
+
+                    <div class="social-links reveal">
+                        <a href="mailto:contact@bernardsolutions.com" class="social-item">
+                            <span>✉</span> <span data-key="email_us">Email Us</span>
+                        </a>
+                        <a href="#" class="social-item">
+                            <span>in</span> <span>LinkedIn</span>
+                        </a>
+                        <a href="#" class="social-item">
+                            <span>X</span> <span>Twitter / X</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-form-container reveal">
+                    <form id="contactForm" onsubmit="handleSubmit(event)">
+
+                        <div class="form-group">
+                            <label class="form-label" data-key="lbl_name">Full Name</label>
+                            <input type="text" class="form-input" required placeholder="John Doe">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" data-key="lbl_email">Email Address</label>
+                            <input type="email" class="form-input" required placeholder="john@company.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" data-key="lbl_interest">I'm interested in...</label>
+                            <div class="interest-grid">
+                                <div class="interest-option" onclick="selectInterest(this)" data-key="opt_web">Web
+                                    Development</div>
+                                <div class="interest-option" onclick="selectInterest(this)" data-key="opt_tec">
+                                    Technical Consulting</div>
+                                <div class="interest-option" onclick="selectInterest(this)" data-key="opt_ai">AI
+                                    Integration</div>
+                                <div class="interest-option" onclick="selectInterest(this)" data-key="opt_other">Other
+                                </div>
+                            </div>
+                            <input type="hidden" id="selectedInterest" name="interest">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" data-key="lbl_message">Project Details</label>
+                            <textarea class="form-textarea" required
+                                placeholder="Tell us about your timeline and goals..."></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn" data-key="btn_send">Send Message</button>
+                        <div class="success-msg" id="successMsg" data-key="msg_success">Message sent successfully. We
+                            will be in touch shortly.</div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="logo-container" style="opacity: 0.7; margin-bottom: 15px;">
+                        <img src="logobs.png" alt="Logo" class="logo-img" style="height: 24px;">
+                        <span class="logo-text" style="font-size: 1rem;">BERNARD SOLUTIONS</span>
+                    </div>
+                    <p style="color: #666; font-size: 0.9rem;" data-key="footer_motto">Building the future, one line of
+                        code at a time.</p>
+                </div>
+                <div class="footer-col">
+                    <h4 style="color: white; margin-bottom: 20px;">Navigation</h4>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 10px;"><a href="index.html"
+                                style="color: inherit; text-decoration: none;" data-key="nav_home">Home</a></li>
+                        <li style="margin-bottom: 10px;"><a href="portfolio.html"
+                                style="color: inherit; text-decoration: none;" data-key="nav_portfolio">Portfolio</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <span data-key="copyright">© 2026 Bernard Solutions. All rights reserved.</span>
+                <span data-key="designed_by">Designed with Precision.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Mobile Menu
+        const mobileBtn = document.querySelector('.mobile-menu-btn');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        let isMenuOpen = false;
+
+        function toggleMobileMenu() {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileOverlay.classList.add('active');
+                mobileBtn.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileOverlay.classList.remove('active');
+                mobileBtn.classList.remove('open');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // 2. Form Interest Selection
+        function selectInterest(element) {
+            document.querySelectorAll('.interest-option').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            document.getElementById('selectedInterest').value = element.innerText;
+        }
+
+        // 3. Form Submit Simulation
+        function handleSubmit(e) {
+            e.preventDefault();
+            const btn = document.querySelector('.submit-btn');
+            const success = document.getElementById('successMsg');
+
+            // Loading State
+            const originalText = btn.innerText;
+            btn.innerText = "Sending...";
+            btn.style.opacity = "0.7";
+
+            // Simulate Delay
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.style.display = "none";
+                success.style.display = "block";
+                document.getElementById('contactForm').reset();
+                document.querySelectorAll('.interest-option').forEach(el => el.classList.remove('selected'));
+            }, 1500);
+        }
+
+        // 4. Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.15 });
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // 5. Translations
+        const translations = {
+            en: {
+                nav_home: "Home",
+                nav_services: "Services",
+                nav_portfolio: "Portfolio",
+                nav_contact: "Contact",
+
+                title: "Let's start the<br><span style='color: #444;'>conversation.</span>",
+                subtitle: "Ready to optimize your operations or build your next digital product? We are here to provide precision and clarity.",
+                email_us: "Email Us",
+
+                lbl_name: "Full Name",
+                lbl_email: "Email Address",
+                lbl_interest: "I'm interested in...",
+                lbl_message: "Project Details",
+
+                opt_web: "Web Development",
+                opt_tec: "Technical Consulting",
+                opt_ai: "AI Integration",
+                opt_other: "Other",
+
+                btn_send: "Send Message",
+                msg_success: "Message sent successfully. We will be in touch shortly.",
+
+                footer_motto: "Building the future, one line of code at a time.",
+                copyright: "© 2026 Bernard Solutions. All rights reserved.",
+                designed_by: "Designed with Precision."
+            },
+            es: {
+                nav_home: "Inicio",
+                nav_services: "Servicios",
+                nav_portfolio: "Portafolio",
+                nav_contact: "Contacto",
+
+                title: "Iniciemos la<br><span style='color: #444;'>conversación.</span>",
+                subtitle: "¿Listo para optimizar operaciones o construir tu próximo producto digital? Estamos aquí para brindar precisión y claridad.",
+                email_us: "Envíanos un correo",
+
+                lbl_name: "Nombre Completo",
+                lbl_email: "Correo Electrónico",
+                lbl_interest: "Estoy interesado en...",
+                lbl_message: "Detalles del Proyecto",
+
+                opt_web: "Desarrollo Web",
+                opt_tec: "Consultoria Técnica",
+                opt_ai: "Integración de IA",
+                opt_other: "Otro",
+
+                btn_send: "Enviar Mensaje",
+                msg_success: "Mensaje enviado con éxito. Nos pondremos en contacto pronto.",
+
+                footer_motto: "Construyendo el futuro, una línea de código a la vez.",
+                copyright: "© 2026 Bernard Solutions. Todos los derechos reservados.",
+                designed_by: "Diseñado con Precisión."
+            }
+        };
+
+        let currentLang = 'en';
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'es' : 'en';
+
+            // Flags
+            document.getElementById('flag-en').classList.toggle('active');
+            document.getElementById('flag-es').classList.toggle('active');
+
+            // Text Updates
+            const elements = document.querySelectorAll('[data-key]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (translations[currentLang][key]) {
+                    el.innerHTML = translations[currentLang][key];
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
